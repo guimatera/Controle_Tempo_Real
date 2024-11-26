@@ -134,7 +134,7 @@ classdef F
         function [S,BUFFER]=SignalsLQRpure(k,PAR,S,BUFFER,h)
                 %% Input Disturbance
                 if (k*h>100)
-                    S.d=-4;
+                    S.d=-4*0;
                 end
                 %% Auxiliary Signals at k
                 % Discrete Plant Output at k

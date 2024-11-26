@@ -28,7 +28,7 @@ x0=[5;0];
 %% LQR Design
 % ----------------------------------------------------------------
 R=1;
-g=0.01;%0.999919; %forgetting factor
+g=0.5;%0.999919; %forgetting factor
 Qe=1;
 
 %% Initial Gain, Noise and Disturbance

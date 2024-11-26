@@ -77,42 +77,47 @@ switch FLAG_PLANT
      case {'CONTINUOUSlinear','CONTINUOUSdrone'}
             figure(1)
             subplot(4,1,1)
-            plot(buffer{1}.tc,buffer{1}.yc,'b','LineWidth',2)
+            plot(buffer{1}.tc,buffer{1}.yc,'g','LineWidth',2)
             hold on
             plot(buffer{1}.k*h,buffer{1}.y,'.r','LineWidth',2)
             plot(buffer{1}.tc,buffer{1}.ymc,'b','LineWidth',2)
             plot(buffer{1}.k*h,buffer{1}.ym,'.k','LineWidth',2)
             hold off
+            title('{\bf Position and Orientation}','Interpreter','latex')
+            legend('Continuous Output','Discrete Output','Continuous Reference Model','Discrete Reference Model')
             grid
+            ylabel('X','Interpreter','latex')
+            
             subplot(4,1,2)
-            plot(buffer{2}.tc,buffer{2}.yc,'b','LineWidth',2)
+            plot(buffer{2}.tc,buffer{2}.yc,'g','LineWidth',2)
             hold on
             plot(buffer{2}.k*h,buffer{2}.y,'.r','LineWidth',2)
             plot(buffer{2}.tc,buffer{2}.ymc,'b','LineWidth',2)
             plot(buffer{2}.k*h,buffer{2}.ym,'.k','LineWidth',2)
             hold off
             grid
-            ylabel('(b)','Interpreter','latex','Rotation',0)
+            ylabel('Y','Interpreter','latex')
             
             subplot(4,1,3)
-            plot(buffer{3}.tc,buffer{3}.yc,'b','LineWidth',2)
+            plot(buffer{3}.tc,buffer{3}.yc,'g','LineWidth',2)
             hold on
             plot(buffer{3}.k*h,buffer{3}.y,'.r','LineWidth',2)
             plot(buffer{3}.tc,buffer{3}.ymc,'b','LineWidth',2)
             plot(buffer{3}.k*h,buffer{3}.ym,'.k','LineWidth',2)
             hold off
             grid
-            ylabel('(c)','Interpreter','latex','Rotation',0)
+            ylabel('Z','Interpreter','latex')
             
             subplot(4,1,4)
-            plot(buffer{4}.tc,buffer{4}.yc*(180/pi),'b','LineWidth',2)
+            plot(buffer{4}.tc,buffer{4}.yc*(180/pi),'g','LineWidth',2)
             hold on
             plot(buffer{4}.k*h,buffer{4}.y*(180/pi),'.r','LineWidth',2)
             plot(buffer{4}.tc,buffer{4}.ymc*(180/pi),'b','LineWidth',2)
             plot(buffer{4}.k*h,buffer{4}.ym*(180/pi),'.k','LineWidth',2)
             hold off
             grid
-            ylabel('(d)','Interpreter','latex','Rotation',0)
+            ylabel('Yaw','Interpreter','latex')
+            xlabel('Time','Interpreter','latex')
             
             figure(2)
             
@@ -121,8 +126,10 @@ switch FLAG_PLANT
             hold on
             plot(buffer{1}.k*h,buffer{1}.u,'.r','LineWidth',2)
             hold off
+            title('{\bf Control of Position and Orientation}','Interpreter','latex')
+            legend('Continuous Control','Discrete Control')
             grid
-            ylabel('(a)','Interpreter','latex','Rotation',0)
+            ylabel('X','Interpreter','latex')
             
             subplot(4,1,2)
             plot(buffer{2}.tc,buffer{2}.uc,'b','LineWidth',2)
@@ -130,7 +137,7 @@ switch FLAG_PLANT
             plot(buffer{2}.k*h,buffer{2}.u,'.r','LineWidth',2)
             hold off
             grid
-            ylabel('(b)','Interpreter','latex','Rotation',0)
+            ylabel('Y','Interpreter','latex')
             
             subplot(4,1,3)
             plot(buffer{3}.tc,buffer{3}.uc,'b','LineWidth',2)
@@ -138,7 +145,7 @@ switch FLAG_PLANT
             plot(buffer{3}.k*h,buffer{3}.u,'.r','LineWidth',2)
             hold off
             grid
-            ylabel('(c)','Interpreter','latex','Rotation',0)
+            ylabel('Z','Interpreter','latex')
             
             subplot(4,1,4)
             plot(buffer{4}.tc,buffer{4}.uc,'b','LineWidth',2)
@@ -146,7 +153,8 @@ switch FLAG_PLANT
             plot(buffer{4}.k*h,buffer{4}.u,'.r','LineWidth',2)
             hold off
             grid
-            ylabel('(d)','Interpreter','latex','Rotation',0)
+            ylabel('Yaw','Interpreter','latex')
+            xlabel('Time','Interpreter','latex')
             
             
             figure(3)

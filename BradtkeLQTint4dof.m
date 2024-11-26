@@ -1,7 +1,7 @@
 clear all
 
-FLAG_PLANT='DISCRETE';
-%FLAG_PLANT='CONTINUOUSlinear';
+%FLAG_PLANT='DISCRETE';
+FLAG_PLANT='CONTINUOUSlinear';
 %FLAG_PLANT='CONTINUOUSdrone';
 
 
@@ -32,8 +32,10 @@ xi0=0;
 %den=conv(conv(den,[1 4]),[1 5]);
 %[Ac,Bc,Cc,Dc]=tf2ss(den(end),den);
 Ac=[0 1;0 -1.5];Bc=[0 1.3]';Cc=[1 0];Dc=0;
-x0=[5;0];
-
+x0 = [12; 0];
+y0 = [0; 0];
+z0 = [11; 0];
+yaw0 = [0.7854; 0];
 % ----------------------------------------------------------------
 %% LQR Design
 % ----------------------------------------------------------------
@@ -73,22 +75,25 @@ for i=1:4
         case 1
             ymtilde=((c1-c2)*cos(c3*ts)+c4*cos(((c1-c2)*c3/c2)*ts));
             [s{i},par{i},buffer{i}]=F.InitializeLQTint(h,xi0,Ac,Bc,Cc,Dc,x0,ymtilde,yss,R,Qe,g,K0factor,THETA0factor,PRLS0factor,noise,d0,dc0);
+            
         case 2
             ymtilde=((c1-c2)*sin(c3*ts)-c4*sin(((c1-c2)*c3/c2)*ts));
-            [s{i},par{i},buffer{i}]=F.InitializeLQTint(h,xi0,Ac,Bc,Cc,Dc,x0,ymtilde,yss,R,Qe,g,K0factor,THETA0factor,PRLS0factor,noise,d0,dc0);
+            [s{i},par{i},buffer{i}]=F.InitializeLQTint(h,xi0,Ac,Bc,Cc,Dc,y0,ymtilde,yss,R,Qe,g,K0factor,THETA0factor,PRLS0factor,noise,d0,dc0);
+            
         case 3
             c3=3*0.1571/10;
             ymtilde=cos(c3*ts);
             yss=10;
-            [s{i},par{i},buffer{i}]=F.InitializeLQTint(h,xi0,Ac,Bc,Cc,Dc,x0,ymtilde,yss,R,Qe*2,g,K0factor,THETA0factor,PRLS0factor,noise,d0,dc0);
+            [s{i},par{i},buffer{i}]=F.InitializeLQTint(h,xi0,Ac,Bc,Cc,Dc,z0,ymtilde,yss,R,Qe*2,g,K0factor,THETA0factor,PRLS0factor,noise,d0,dc0);
+           
         case 4
             c3=3*0.1571/20;
             ymtilde=(45*pi/180)*cos(c3*ts);
             yss=0;
-            [s{i},par{i},buffer{i}]=F.InitializeLQTint(h,xi0,Ac,Bc,Cc,Dc,x0,ymtilde,yss,R,Qe,g,K0factor,THETA0factor,PRLS0factor,noise,d0,dc0);
+            [s{i},par{i},buffer{i}]=F.InitializeLQTint(h,xi0,Ac,Bc,Cc,Dc,yaw0,ymtilde,yss,R,Qe,g,K0factor,THETA0factor,PRLS0factor,noise,d0,dc0);
+            
     end 
 end
-
 %[S.K;PAR.Kstar]
 
 %{
