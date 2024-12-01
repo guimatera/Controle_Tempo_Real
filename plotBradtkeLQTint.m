@@ -7,33 +7,42 @@ switch FLAG_PLANT
             plot(BUFFER.k*h,BUFFER.y,'.r','LineWidth',2)
             hold on
             plot(BUFFER.k*h,BUFFER.ym,'.k','LineWidth',2)
+            legend('Discrete Output','Discrete Reference Model')
             hold off
-            title('{\bf Position and Control}','Interpreter','latex')
+            title('{\bf Position and Control (LQT Int)}','Interpreter','latex')
             grid
-            ylabel('(a)','Interpreter','latex','Rotation',0)
+            ylabel('Position','Interpreter','latex')
+           
             subplot(2,1,2)
             plot(BUFFER.k*h,BUFFER.u,'.r','LineWidth',2)
+            legend('Discrete Control')
             grid
-            ylabel('(b)','Interpreter','latex','Rotation',0)
+            ylabel('Control','Interpreter','latex')
+            xlabel('Time','Interpreter','latex')
+            
       case 'CONTINUOUS'
             figure(1)
             subplot(2,1,1)
-            plot(BUFFER.tc,BUFFER.yc,'b','LineWidth',2)
+            plot(BUFFER.tc,BUFFER.yc,'g','LineWidth',2)
             hold on
             plot(BUFFER.k*h,BUFFER.y,'.r','LineWidth',2)
             plot(BUFFER.tc,BUFFER.ymc,'b','LineWidth',2)
             plot(BUFFER.k*h,BUFFER.ym,'.k','LineWidth',2)
             hold off
-            title('{\bf Position and Control}','Interpreter','latex')
+            title('{\bf Position and Control (LQT Int)}','Interpreter','latex')
+            legend('Continuous Output','Discrete Output','Continuous Reference Model','Discrete Reference Model')
             grid
-            ylabel('(a)','Interpreter','latex','Rotation',0)
+            ylabel('Position','Interpreter','latex')
+            
             subplot(2,1,2)
             plot(BUFFER.tc,BUFFER.uc,'b','LineWidth',2)
             hold on
             plot(BUFFER.k*h,BUFFER.u,'.r','LineWidth',2)
             hold off
             grid
-            ylabel('(b)','Interpreter','latex','Rotation',0)
+            legend('Continuous Control','Discrete Control')
+            ylabel('Control','Interpreter','latex')
+            xlabel('Time','Interpreter','latex')
 end
 
 

@@ -1,22 +1,64 @@
 close all
 
-figure(1)
-subplot(2,1,1)
-%plot(BUFFER.kc,BUFFER.yc,'r','LineWidth',2)
-%plot(BUFFER.k*h,(sqrt(g).^BUFFER.k).*BUFFER.y,'r','LineWidth',2)
-plot(BUFFER.k*h,BUFFER.y,'r','LineWidth',2)
-hold on
-%plot(BUFFER.kc,BUFFER.ymc,'k','LineWidth',2)
-%plot(BUFFER.k*h,BUFFER.ym,'k','LineWidth',2)
-hold off
-title('{\bf Position and Control}','Interpreter','latex')
-grid
-ylabel('(a)','Interpreter','latex','Rotation',0)
-subplot(2,1,2)
-%plot(BUFFER.kc,BUFFER.uc,'r','LineWidth',2)
-plot(BUFFER.k*h,BUFFER.u,'r','LineWidth',2)
-grid
-ylabel('(b)','Interpreter','latex','Rotation',0)
+switch FLAG_PLANT
+      case 'DISCRETE'
+            figure(1)
+            subplot(2,1,1)
+            plot(BUFFER.k*h,BUFFER.y,'.r','LineWidth',2)
+            hold on
+            legend('Discrete Output')
+            hold off
+            title('{\bf Position and Control (LQR)}','Interpreter','latex')
+            grid
+            ylabel('Position','Interpreter','latex')
+           
+            subplot(2,1,2)
+            plot(BUFFER.k*h,BUFFER.u,'.r','LineWidth',2)
+            legend('Discrete Control')
+            grid
+            ylabel('Control','Interpreter','latex')
+            xlabel('Time','Interpreter','latex')
+            
+      case 'CONTINUOUS'
+            figure(1)
+            subplot(2,1,1)
+            plot(BUFFER.tc,BUFFER.yc,'g','LineWidth',2)
+            hold on
+            plot(BUFFER.k*h,BUFFER.y,'.r','LineWidth',2)
+            hold off
+            title('{\bf Position and Control (LQR)}','Interpreter','latex')
+            legend('Continuous Output','Discrete Output')
+            grid
+            ylabel('Position','Interpreter','latex')
+            
+            subplot(2,1,2)
+            plot(BUFFER.tc,BUFFER.uc,'b','LineWidth',2)
+            hold on
+            plot(BUFFER.k*h,BUFFER.u,'.r','LineWidth',2)
+            hold off
+            grid
+            legend('Continuous Control','Discrete Control')
+            ylabel('Control','Interpreter','latex')
+            xlabel('Time','Interpreter','latex')
+end
+
+% figure(1)
+% subplot(2,1,1)
+% %plot(BUFFER.kc,BUFFER.yc,'r','LineWidth',2)
+% %plot(BUFFER.k*h,(sqrt(g).^BUFFER.k).*BUFFER.y,'r','LineWidth',2)
+% plot(BUFFER.k*h,BUFFER.y,'r','LineWidth',2)
+% hold on
+% %plot(BUFFER.kc,BUFFER.ymc,'k','LineWidth',2)
+% %plot(BUFFER.k*h,BUFFER.ym,'k','LineWidth',2)
+% hold off
+% title('{\bf Position and Control}','Interpreter','latex')
+% grid
+% ylabel('(a)','Interpreter','latex','Rotation',0)
+% subplot(2,1,2)
+% %plot(BUFFER.kc,BUFFER.uc,'r','LineWidth',2)
+% plot(BUFFER.k*h,BUFFER.u,'r','LineWidth',2)
+% grid
+% ylabel('(b)','Interpreter','latex','Rotation',0)
 
 
 % figure(2)

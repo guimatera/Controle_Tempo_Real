@@ -4,7 +4,6 @@ FLAG_PLANT='DISCRETE';
 %FLAG_PLANT='CONTINUOUS';
 
 
-
 FLAG_UPDATE=0;
 % Sampling time (h) and integration step (hc)
 h=1/1;
@@ -35,7 +34,7 @@ x0=[5;0];
 %% LQR Design
 % ----------------------------------------------------------------
 R=1;
-g=0.99;%0.999919;
+g=0.05;%0.999919;
 Qe=1;
 
 %% Initial Gain, Noise and Disturbance

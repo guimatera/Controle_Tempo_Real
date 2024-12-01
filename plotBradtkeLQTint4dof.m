@@ -9,7 +9,7 @@ switch FLAG_PLANT
             plot(buffer{1}.k*h,buffer{1}.ym,'.k','LineWidth',2)
             legend('Discrete Output','Discrete Reference Model')
             hold off
-            title('{\bf Position and Orientation}','Interpreter','latex')
+            title('{\bf Position and Orientation (LQT Int 4DOFs)}','Interpreter','latex')
             grid
             ylabel('X','Interpreter','latex')
             subplot(4,1,2)
@@ -39,7 +39,7 @@ switch FLAG_PLANT
             figure(2)
             subplot(4,1,1)
             plot(buffer{1}.k*h,buffer{1}.u,'.r','LineWidth',2)
-            title('{\bf Control of Position and Orientation}','Interpreter','latex')
+            title('{\bf Control of Position and Orientation (LQT Int 4DOFs)}','Interpreter','latex')
             hold on
             hold off
             grid
@@ -64,14 +64,14 @@ switch FLAG_PLANT
             
             figure(3)
             plot3(buffer{1}.y, buffer{2}.y, buffer{3}.y, '.b')
-            title('{\bf Position}','Interpreter','latex')
+            title('{\bf Position (LQT Int 4DOFs)}','Interpreter','latex')
             hold on
             plot3(buffer{1}.ym, buffer{2}.ym, buffer{3}.ym, '.r')
             grid
             xlabel('X','Interpreter','latex')
             ylabel('Y','Interpreter','latex')
             zlabel('Z','Interpreter','latex')
-            legend('Saída Discreta','Modelo de Referência Discreto')
+            legend('Discrete Output','Discrete Reference Model')
 
 
      case {'CONTINUOUSlinear','CONTINUOUSdrone'}
@@ -83,7 +83,9 @@ switch FLAG_PLANT
             plot(buffer{1}.tc,buffer{1}.ymc,'b','LineWidth',2)
             plot(buffer{1}.k*h,buffer{1}.ym,'.k','LineWidth',2)
             hold off
-            title('{\bf Position and Orientation}','Interpreter','latex')
+            title_sg = sgtitle(sprintf('Position and Orientation (LQT Int 4DOFs - %s)', FLAG_PLANT),'Interpreter','latex');
+            title_sg.FontSize = 12;
+            title_sg.FontWeight = 'bold';  
             legend('Continuous Output','Discrete Output','Continuous Reference Model','Discrete Reference Model')
             grid
             ylabel('X','Interpreter','latex')
@@ -126,7 +128,9 @@ switch FLAG_PLANT
             hold on
             plot(buffer{1}.k*h,buffer{1}.u,'.r','LineWidth',2)
             hold off
-            title('{\bf Control of Position and Orientation}','Interpreter','latex')
+            title_sg = sgtitle(sprintf('Control of Position and Orientation (LQT Int 4DOFs - %s)', FLAG_PLANT),'Interpreter','latex');
+            title_sg.FontSize = 12;
+            title_sg.FontWeight = 'bold';  
             legend('Continuous Control','Discrete Control')
             grid
             ylabel('X','Interpreter','latex')
@@ -165,9 +169,11 @@ switch FLAG_PLANT
             plot3(buffer{1}.ymc, buffer{2}.ymc, buffer{3}.ymc, 'b')
             hold on
             plot3(buffer{1}.ym, buffer{2}.ym, buffer{3}.ym, '.k')
-            title('{\bf Position}','Interpreter','latex')
+            title_sg = sgtitle(sprintf('Position (LQT Int 4DOFs - %s)', FLAG_PLANT),'Interpreter','latex');
+            title_sg.FontSize = 12;
+            title_sg.FontWeight = 'bold';
             grid
-            legend('Saída Contínua','Saída Discreta','Modelo de Referência Contínuo','Modelo de Referência Discreto')
+            legend('Continuous Output','Discrete Output','Continuous Reference Model','Discrete Reference Model')
             xlabel('X','Interpreter','latex')
             ylabel('Y','Interpreter','latex')
             zlabel('Z','Interpreter','latex')

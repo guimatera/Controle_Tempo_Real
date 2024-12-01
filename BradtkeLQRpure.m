@@ -3,8 +3,6 @@ clear all
 FLAG_PLANT='DISCRETE';
 %FLAG_PLANT='CONTINUOUS';
 
-
-
 FLAG_UPDATE=0;
 % Sampling time (h) and integration step (hc)
 h=1/1;
@@ -48,8 +46,6 @@ Gain=[];
     
 %% Initialization for S,PAR,BUFFER
 [S,PAR,BUFFER]=F.InitializeLQRpure(h,Ac,Bc,Cc,Dc,x0,R,Qe,g,K0factor,THETA0factor,PRLS0factor,noise,d0,dc0);
-
-
 
 
 %[S.K;PAR.Kstar]

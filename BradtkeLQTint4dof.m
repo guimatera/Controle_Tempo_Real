@@ -1,7 +1,7 @@
 clear all
 
-%FLAG_PLANT='DISCRETE';
-FLAG_PLANT='CONTINUOUSlinear';
+FLAG_PLANT='DISCRETE';
+%FLAG_PLANT='CONTINUOUSlinear';
 %FLAG_PLANT='CONTINUOUSdrone';
 
 
@@ -38,15 +38,17 @@ z0 = [11; 0];
 yaw0 = [0.7854; 0];
 % ----------------------------------------------------------------
 %% LQR Design
+% Seguir com os parâmetros que o Professor disse na 
+% última aula (foto na pasta Documentação)
 % ----------------------------------------------------------------
 R=1;
 g=0.5;%0.999919;
-%Qe=1/10;
-Qe=1;
+Qe=1/10; % For CONTINUOUSdrone flag
+%Qe=1;
 
 %% Initial Gain, Noise and Disturbance
-%K0factor=1/2;
-K0factor=1;
+K0factor=1/2; % For CONTINUOUSdrone flag
+%K0factor=1;
 noise=0;
 dc0=0;d0=0;
 
