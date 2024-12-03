@@ -1,7 +1,7 @@
 clear all
 
-FLAG_PLANT='DISCRETE';
-%FLAG_PLANT='CONTINUOUS';
+%FLAG_PLANT='DISCRETE';
+FLAG_PLANT='CONTINUOUS';
 
 FLAG_UPDATE=0;
 % Sampling time (h) and integration step (hc)

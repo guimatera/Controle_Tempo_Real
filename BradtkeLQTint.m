@@ -1,7 +1,7 @@
 clear all
 
-FLAG_PLANT='DISCRETE';
-%FLAG_PLANT='CONTINUOUS';
+%FLAG_PLANT='DISCRETE';
+FLAG_PLANT='CONTINUOUS';
 
 FLAG_UPDATE=0;
 % Sampling time (h) and integration step (hc)
@@ -30,17 +30,19 @@ xi0=0;
 %den=conv(conv(den,[1 4]),[1 5]);
 %[Ac,Bc,Cc,Dc]=tf2ss(den(end),den);
 Ac=[0 1;0 -1.5];Bc=[0 1.3]';Cc=[1 0];Dc=0;
-x0=[5;0];
+x0 = [5;0]; % condições iniciais dados pelo Professor
+% x0=[12;0]; % PAR.Cm*PAR.xm0 (slide 67)
+% x0=[20;0]; % PAR.Cm*PAR.xm0*(1+2/3)
 
 % ----------------------------------------------------------------
 %% LQR Design
 % ----------------------------------------------------------------
 R=1;
 g=0.5;%0.999919;
-Qe=1;
+Qe=10;
 
 %% Initial Gain, Noise and Disturbance
-K0factor=1/1;
+K0factor=1/5;
 noise=0;
 dc0=0;d0=0;
 

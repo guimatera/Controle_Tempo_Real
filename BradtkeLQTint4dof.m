@@ -32,10 +32,19 @@ xi0=0;
 %den=conv(conv(den,[1 4]),[1 5]);
 %[Ac,Bc,Cc,Dc]=tf2ss(den(end),den);
 Ac=[0 1;0 -1.5];Bc=[0 1.3]';Cc=[1 0];Dc=0;
-x0 = [12; 0];
-y0 = [0; 0];
-z0 = [11; 0];
-yaw0 = [0.7854; 0];
+
+% Condições iniciais dadas pelo Professor:
+x0 = [5;0];
+y0 = x0;
+z0 = x0;
+yaw0 = x0;
+
+% Condições Iniciais calculadas/escolhidas por mim e Guilherme com base no slide 67
+% x0 = [12; 0];
+% y0 = [0; 0];
+% z0 = [11; 0];
+% yaw0 = [0.7854; 0];
+
 % ----------------------------------------------------------------
 %% LQR Design
 % Seguir com os parâmetros que o Professor disse na 
