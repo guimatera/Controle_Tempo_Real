@@ -28,14 +28,16 @@ ymtilde=((c1-c2)*cos(c3*ts)+c4*cos(((c1-c2)*c3/c2)*ts))+yss;
 %den=conv(conv(den,[1 4]),[1 5]);
 %[Ac,Bc,Cc,Dc]=tf2ss(den(end),den);
 Ac=[0 1;0 -1.5];Bc=[0 1.3]';Cc=[1 0];Dc=0;
-x0=[5;0];
+
+% x0=[5;0]; % C.I. dada pelo Professor
+x0 = [12;0]; % PAR.Cm*PAR.xm0
 
 % ----------------------------------------------------------------
 %% LQR Design
 % ----------------------------------------------------------------
-R=1;
-g=0.5;%0.999919;
-Qe=1;
+R=2;
+g=0.99;%0.999919;
+Qe=3.5;
 
 %% Initial Gain, Noise and Disturbance
 K0factor=1/1;
@@ -53,7 +55,7 @@ GainNorm=[];
 Gain=[];
     
 %% Initialization for S,PAR,BUFFER
-[S,PAR,BUFFER]=F.InitializeLQTpure(h,Ac,Bc,Cc,Dc,x0,ymtilde,yss,R,Qe,g,K0factor,THETA0factor,PRLS0factor,noise,d0,dc0);
+[S,PAR,BUFFER]=F.InitializeLQTpure(h,Ac,Bc,Cc,Dc,x0+yss,ymtilde,yss,R,Qe,g,K0factor,THETA0factor,PRLS0factor,noise,d0,dc0);
 
 
 

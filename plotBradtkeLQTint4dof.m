@@ -27,9 +27,9 @@ switch FLAG_PLANT
             grid
             ylabel('Z','Interpreter','latex')
             subplot(4,1,4)
-            plot(buffer{4}.k*h,buffer{4}.y,'.r','LineWidth',2)
+            plot(buffer{4}.k*h,buffer{4}.y*(180/pi),'.r','LineWidth',2)
             hold on
-            plot(buffer{4}.k*h,buffer{4}.ym,'.k','LineWidth',2)
+            plot(buffer{4}.k*h,buffer{4}.ym*(180/pi),'.k','LineWidth',2)
             hold off
             grid
             ylabel('Yaw','Interpreter','latex')

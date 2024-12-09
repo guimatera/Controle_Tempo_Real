@@ -1,7 +1,7 @@
 clear all
 
-%FLAG_PLANT='DISCRETE';
-FLAG_PLANT='CONTINUOUS';
+FLAG_PLANT='DISCRETE';
+%FLAG_PLANT='CONTINUOUS';
 
 FLAG_UPDATE=0;
 % Sampling time (h) and integration step (hc)
@@ -25,9 +25,9 @@ x0=[5;0];
 % ----------------------------------------------------------------
 %% LQR Design
 % ----------------------------------------------------------------
-R=1;
-g=0.5;%0.999919; %forgetting factor
-Qe=1;
+R=2; % multiplica o controle
+g=0.99;%0.999919; %forgetting factor
+Qe=3.5; % multiplica os estados
 
 %% Initial Gain, Noise and Disturbance
 K0factor=1/1;
