@@ -123,3 +123,6 @@ while (countk<=NT)
 end
 plotBradtkeLQTpure;
 [S.K;PAR.Kstar]
+size(BUFFER.tc)
+size(BUFFER.k)
+

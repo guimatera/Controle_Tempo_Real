@@ -63,10 +63,10 @@ switch FLAG_PLANT
             
             
             figure(3)
-            plot3(buffer{1}.y, buffer{2}.y, buffer{3}.y, '.b')
+            plot3(buffer{1}.y, buffer{2}.y, buffer{3}.y, '--b')
             title('{\bf Position (LQT Int 4DOFs)}','Interpreter','latex')
             hold on
-            plot3(buffer{1}.ym, buffer{2}.ym, buffer{3}.ym, '.r')
+            plot3(buffer{1}.ym, buffer{2}.ym, buffer{3}.ym, '--r')
             grid
             xlabel('X','Interpreter','latex')
             ylabel('Y','Interpreter','latex')
@@ -164,11 +164,11 @@ switch FLAG_PLANT
             figure(3)
             plot3(buffer{1}.yc, buffer{2}.yc, buffer{3}.yc, 'm')
             hold on
-            plot3(buffer{1}.y, buffer{2}.y, buffer{3}.y, '.r')
+            plot3(buffer{1}.y, buffer{2}.y, buffer{3}.y, '--r')
             hold on
             plot3(buffer{1}.ymc, buffer{2}.ymc, buffer{3}.ymc, 'b')
             hold on
-            plot3(buffer{1}.ym, buffer{2}.ym, buffer{3}.ym, '.k')
+            plot3(buffer{1}.ym, buffer{2}.ym, buffer{3}.ym, '--k')
             title_sg = sgtitle(sprintf('Position (LQT Int 4DOFs - %s)', FLAG_PLANT),'Interpreter','latex');
             title_sg.FontSize = 12;
             title_sg.FontWeight = 'bold';
